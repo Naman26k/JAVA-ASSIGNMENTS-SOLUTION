@@ -1,0 +1,749 @@
+/**
+ *
+ * 1. Write a function to add integer values of an array
+ */
+package com.nm.arrays;
+
+public class AddIntegerValues {
+
+    //function to add integer values of an array
+    //creating a method which receives an array as parameter
+    static int arrSum(int[] arr) {
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++)
+            sum = sum + arr[i];
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        //declaration, instantiation and initialization
+        int[] arr = {10, 20, 30, 40, 50};
+        //The Java for-each loop prints the array elements one by one.
+        // It holds an array element in a variable, then executes the body of the loop
+        for (int i : arr)
+            System.out.print(i + " + ");
+        //passing array to method
+        System.out.print(" =  " + arrSum(arr));
+    }
+}
+
+/**
+ *
+ * 2. Write a function to calculate the average value of an array of integers
+ */
+
+public class CalculateAverageValue {
+    //method to calculate the average value
+    //creating a method which receives an array as parameter
+    static void avgArray(int[] arr) {
+        int sum = 0;
+        //for-each loop
+        for (int i : arr) {
+            //first calculate the sum of all elements in the array and store in sum
+            sum = sum + i;
+        }
+        //we calculate the average by the formula (avg = sum of numbers/total count)
+        int average = sum / arr.length;
+        //Prints the average number
+        System.out.print("The Average value of array is " + average);
+    }
+
+    public static void main(String[] args) {
+        //declaring and initializing an array
+        int[] arr = {1, 2, 3, 4, 5};
+        //passing array to method to get average value
+        avgArray(arr);
+    }
+}
+
+/**
+ *
+ * 3. Write a program to find the index of an array element.
+ */
+
+import java.util.*;
+
+public class FindIndex {
+    //method to find the index of an array element.
+    //creating a method which receives an array and integer as parameter
+    static void arrIndex(int[] arr, int n) {
+        for (int i = 0; i < arr.length; i++)
+            //executes if given input matches
+            if (n == arr[i]) {
+                System.out.println(n + " is at index " + i);
+                return;
+            }
+    }
+
+    public static void main(String[] args) {
+        int index;
+        //declaring and initializing an array
+        int[] arr = {11, 22, 33, 44, 55, 66, 77};
+        System.out.println("arr = " + Arrays.toString(arr));
+        //user input
+        System.out.print("Select any value to find Index of array : ");
+        Scanner sc = new Scanner(System.in);
+        index = sc.nextByte();
+        //passing array and index to method
+        arrIndex(arr, index);
+    }
+}
+
+/**
+ *
+ * 4. Write a function to test if array contains a specific value
+ */
+
+
+import java.util.*;
+
+public class ContainsSpecificValue {
+    //method to test if array contains a specific value
+    //creating a method which receives an array and integer as parameters
+    static boolean contains(int[] arr, int n) {
+        //using for-each loop
+        for (int i : arr) {
+            //returns if given n value is in index
+            if (i == n) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        int n;
+        //declaring and initializing an array
+        int[] arr = {11, 22, 33, 44, 55};
+        System.out.print("Enter the value which should be searched : ");
+        Scanner sc = new Scanner(System.in);
+        n = sc.nextInt();
+        //passing array and user input to method
+        boolean hasValue = contains(arr, n);
+        //Executes if(true)
+        if (hasValue) {
+            System.out.println("Contains " + n + " in the array");
+            System.out.println(Arrays.toString(arr));
+        } else {
+            System.out.println("Does not Contains " + n + " in the array");
+            System.out.println(Arrays.toString(arr));
+        }
+    }
+}
+
+
+/**
+ *
+ * 5.Write a function to remove a specific element from an array
+ */
+
+import java.util.*;
+
+public class RemoveElementFromArray {
+
+    //function to remove a specific element from an array
+    //creating a method which receives an array and integer as parameters
+    public static int[] removeElement(int[] arr, int index)
+    {
+        /* If the array is empty or the index is not in array range return the original array */
+        if (arr == null || index < 0 || index >= arr.length) {
+            return arr;
+        }
+        // Create another array of size one less
+        int[] anotherArray = new int[arr.length - 1];
+        // Copy the elements except the index from original array to the other array
+        for (int i = 0, k = 0; i < arr.length; i++) {
+            // if the index is the removal element index
+            if (i == index) {
+                continue;
+            }
+            // if the index is not the removal element index
+            anotherArray[k++] = arr[i];
+        }
+        // return the resultant array
+        return anotherArray;
+    }
+
+    public static void main(String[] args) {
+        //declaring and initializing an array
+        int[] arr = { 11, 22, 33, 44, 55 };
+        // Print the resultant array
+        System.out.print("Select an index to remove a value from arr = " + Arrays.toString(arr) + ": ");
+        // Get the specific index
+        Scanner sc = new Scanner(System.in);
+        int index = sc.nextInt();
+        // Print the index at which value is removed
+        System.out.println("Array after removing Element at index " + index );
+        //passing array to method to Remove the element
+        arr = removeElement(arr, index);
+        // Print the resultant array
+        System.out.println("arr = " + Arrays.toString(arr));
+    }
+}
+
+/**
+ *
+ * 6. Write a function to copy an array to another array
+ */
+
+import java.util.*;
+
+public class CopyArray {
+
+    //function to copy an array to another array
+    //creating a method which receives an array as parameter
+    static void copyingArray(int[] arr) {
+        //copies given arr array to copy array
+        int[] copy = arr;
+        //prints the copied array
+        System.out.println("Array after copying to c = " + Arrays.toString(copy));
+    }
+
+    public static void main(String[] args) {
+        int n;
+        Scanner sc = new Scanner(System.in);
+        //user input
+        System.out.print("Enter the number of elements you want to store : ");
+        n = sc.nextInt();
+        //no of elements to store
+        System.out.println("Enter the Elements of the array ");
+        ///new array
+        int[] my_arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            System.out.printf("my_arr[%d] = ", i);
+            //Elements input
+            my_arr[i] = sc.nextInt();
+        }
+        System.out.println("my_arr = " + Arrays.toString(my_arr));
+        //passing Array to copy to another array
+        copyingArray(my_arr);
+    }
+}
+
+
+/**
+ *
+ * 7. Write a function to insert an element at a specific position in the array.
+ */
+
+
+import java.util.*;
+
+public class InsertAtSpecificPosition {
+    //function to insert an element at a specific position in the array.
+    //creating a method which receives an array and integers as parameters
+    static void insertElement(int[] arr, int index, int v) {
+        for (int i = arr.length; i <= index; i--) {
+            arr[i] = arr[i - 1];
+        }
+        //assigns value at given index
+        arr[index] = v;
+    }
+
+    public static void main(String[] args) {
+        int index, v;
+        //declaring and initializing an array
+        int[] my_arr = {11, 22, 33, 44, 55, 66, 77, 88, 99};
+        System.out.println("original Array : my_arr = " + Arrays.toString(my_arr));
+
+        Scanner sc = new Scanner(System.in);
+        //user input
+        System.out.print("Enter the index number : ");
+        index = sc.nextInt();
+        System.out.printf("Enter the value to insert at index my_arr[%d] =  ", index);
+        v = sc.nextInt();
+        //passing array, index and value to method
+        insertElement(my_arr, index, v);
+
+        System.out.println("Array after Inserting Element : ");
+        System.out.println("my_arr = " + Arrays.toString(my_arr));
+    }
+}
+
+
+/**
+ *
+ * 8. Write a function to find the minimum and maximum value of an array
+ */
+
+
+import java.util.Arrays;
+
+public class MinMaxValue {
+    //function to find the minimum value of an array
+    //creating a method which receives an array as parameter
+    static int minValue(int[] arr) {
+        //int result = arr[0];
+        int min = arr[0];
+        //for each loop
+        for (int j : arr)
+            if (j < min)
+                min = j;
+        return min;
+    }
+    //function to find the maximum value of an array
+    //creating a method which receives an array as parameter
+    static int maxValue(int[] arr) {
+        // int result = arr[0];
+        int max = arr[0];
+        //for each loop
+        for (int j : arr)
+            if (j > max)
+                max = j;
+        return max;
+    }
+
+    public static void main(String[] args) {
+        //declaring and initializing an array
+        int[] my_arr = {11, 22, 33, 44, 55, 66};
+        //printing array as string
+        System.out.println("my_arr = " + Arrays.toString(my_arr));
+        //passing array to method to get maximum value
+        System.out.println("The Maximum value = " + maxValue(my_arr));
+        //passing array to method to get minimum value
+        System.out.println("The Minimum value = " + minValue(my_arr));
+    }
+}
+
+
+/**
+ *
+ * 9. Write a function to reverse an array of integer values
+ */
+
+
+import java.util.Arrays;
+
+public class ReverseArray {
+    //function to reverse an array of integer values
+    //creating a method which receives an array as a parameter
+    static void reverseArray(int[] arr) {
+        //creating new array to store reversed array
+        int[] r_arr = new int[arr.length];
+        //
+        int j = arr.length;
+        for (int i : arr) {
+            r_arr[j - 1] = i;
+            j = j - 1;
+        }
+        System.out.println("Reversed Array  : r_arr = " + Arrays.toString(r_arr));
+    }
+
+    public static void main(String[] args) {
+        //declaring and initializing an array
+        int[] my_arr = {11, 22, 33, 44, 55};
+        //printing array as string
+        System.out.println("Original Array : my_arr = " + Arrays.toString(my_arr));
+        //passing array to method to reverse an array
+        reverseArray(my_arr);
+    }
+}
+
+
+/**
+ *
+ * 10.Write a function to find the duplicate values of an array
+ */
+
+import java.util.Arrays;
+
+public class DuplicateValues {
+    //function to find the duplicate values of an array
+    //creating a method which receives an array as parameter
+    static void duplicateValues(int[] arr) {
+        //outer loop
+        System.out.println("Duplicate values : ");
+        for (int i = 0; i < arr.length - 1; i++) {
+            //inner loop
+            for (int j = i + 1; j < arr.length; j++) {
+                if ((arr[i] == arr[j] && (i != j))) {
+                    //prints the duplicate element
+                    System.out.print(arr[j] + " ");
+                }
+            }
+        }
+    }
+    public static void main(String[] args) {
+        //declaring and initializing an array
+        int[] my_arr = {11, 22, 33, 44, 55, 22, 44, 33};
+        //printing array as string
+        System.out.println("my_arr[] = " + Arrays.toString(my_arr));
+        //passing array to method to get duplicate values
+        duplicateValues(my_arr);
+    }
+}
+
+
+/**
+ *
+ * 11.Write a program to find the common values between two arrays
+ */
+
+import java.util.Arrays;
+
+public class CommonValuesInTwoArrays {
+    //method to find the common values between two arrays
+    //creating a method which receives two arrays as parameters
+    static void commonValues(int[] arr1, int[] arr2) {
+        //outer loop
+        for (int k : arr1) {
+            //inner loop
+            for (int i : arr2) {
+                //checks if both array has same elements
+                if (k == i) {
+                    //prints common elements
+                    System.out.println("Common values : " + k);
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        //declaring and initializing two arrays
+        int[] arr1 = {11, 22, 33, 44, 55};
+        int[] arr2 = {66, 55, 77, 11, 88};
+        System.out.println("arr1[] = " + Arrays.toString(arr1));
+        System.out.println("arr2[] = " + Arrays.toString(arr2));
+        //passing two arrays to method to get common values
+        commonValues(arr1, arr2);
+    }
+}
+
+
+
+/**
+ *
+ * 12. Write a method to remove duplicate elements from an array
+ */
+
+import java.util.Arrays;
+
+public class RemoveDuplicateElements {
+    //method to remove duplicate elements from an array
+    //creating a method which receives an array and integer as parameters
+    static int removerDuplicate(int[] arr, int n) {
+        if (n == 0 || n == 1) {
+            return n;
+        }
+        // creating another array for only storing the unique elements
+        int[] temp = new int[n];
+        int j = 0;
+        for (int i = 0; i < n - 1; i++) {
+            if (arr[i] != arr[i + 1]) {
+                temp[j++] = arr[i];
+            }
+        }
+        temp[j++] = arr[n - 1];
+        // Changing the original array
+        for (int i = 0; i < j; i++) {
+            arr[i] = temp[i];
+        }
+        return j;
+    }
+
+    public static void main(String[] args) {
+        //declaring and initializing an array
+        int[] arr = {11, 22, 22, 33, 44, 44, 55, 66, 66};
+        // Printing array as string
+        System.out.println("arr[] = " + Arrays.toString(arr));
+        int n = arr.length;
+        //passing array and array length to method
+        n = removerDuplicate(arr, n);
+        // Printing The new array elements
+        System.out.println("Array after removing duplicate values : ");
+        for (int i = 0; i < n; i++)
+            System.out.print(arr[i] + " ");
+    }
+}
+
+
+/**
+ *
+ * 13. Write a method to find the second-largest number in an array
+ */
+
+
+import java.util.Arrays;
+
+public class SecondLargestNumber {
+    //method to find the second-largest number in an array
+    //creating a method which receives an array as parameter
+    static void secondLargest(int[] arr) {
+        int temp;
+        //outer loop
+        for (int i = 0; i < arr.length; i++) {
+            //inner loop
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] > arr[j]) {
+                    temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+        System.out.println("The second largest number in Array : " + arr[arr.length - 2]);
+    }
+
+    public static void main(String[] args) {
+        //declaring and initializing an array
+        int[] my_arr = {11, 22, 33, 44, 55};
+        System.out.println("arr[] = " + Arrays.toString(my_arr));
+        //passing array to method
+        secondLargest(my_arr);
+    }
+}
+
+
+/**
+ *
+ * 14. Write a method to find the second-largest number in an array
+ */
+
+
+import java.util.Arrays;
+
+public class SecondLargestNumber {
+    //method to find the second-largest number in an array
+    //creating a method which receives an array as parameter
+    static void secondLargest(int[] arr) {
+        int temp;
+        //outer loop
+        for (int i = 0; i < arr.length; i++) {
+            //inner loop
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] > arr[j]) {
+                    temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+        System.out.println("The second largest number in Array : " + arr[arr.length - 2]);
+    }
+
+    public static void main(String[] args) {
+        //declaring and initializing an array
+        int[] my_arr = {11, 22, 33, 44, 55};
+        System.out.println("arr[] = " + Arrays.toString(my_arr));
+        //passing array to method
+        secondLargest(my_arr);
+    }
+}
+
+
+/**
+ *
+ * 15. Write a method to find number of even number and odd numbers in an array
+ */
+
+
+import java.util.Arrays;
+
+public class EvenOddNumbers {
+    //method to find number of even numbers in an array
+    //creating a method which receives an array as parameter
+    static void evenNumber(int[] arr) {
+        System.out.print("Even numbers in array : ");
+        //for each loop
+        for (int i : arr) {
+            //any numbers divided by 2 leaves remainder 0 is an even number
+            if (i % 2 == 0) {
+                System.out.print(i + "  ");
+            }
+        }
+    }
+    //method to find number of odd numbers in an array
+    //creating a method which receives an array as parameter
+    static void oddNumber(int[] arr) {
+        System.out.print("\nOdd numbers in array : ");
+        //for each loop
+        for (int j : arr) {
+            //any numbers divided by 2 if doesn't leaves remainder 0 is an odd number
+            if (j % 2 != 0) {
+                System.out.print(j + "  ");
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        //declaring and initializing an array
+        int[] arr = {11, 22, 33, 44, 55};
+        System.out.println("a[] = " + Arrays.toString(arr));
+        //passing array to method to get even numbers
+        evenNumber(arr);
+        //passing array to method to get odd numbers
+        oddNumber(arr);
+    }
+}
+
+
+/**
+ *
+ * 16. Write a function to get the difference of largest and smallest value
+ */
+
+import java.util.Arrays;
+
+public class MaxMinDifference {
+    //method to get the difference of the largest and smallest value
+    //creating a method that receives an array as a parameter
+    static void difference_Min_Max(int[] arr) {
+        int max = arr[0];
+        int min = arr[0];
+        int difference;
+        for (int i = 1; i < arr.length; i++) {
+            //Executes if value at index is larger
+            if (arr[i] > max) {
+                max = arr[i];
+            //Executes if value at index is smaller
+            } else if (arr[i] < min) {
+                min = arr[i];
+            }
+        }
+        //Difference of both max and min is assigned
+        difference = max - min;
+        //prints largest and smallest values
+        System.out.printf("Maximum value : %d , Minimum value : %d ", max, min);
+        //prints difference of largest and smallest value
+        System.out.println("\nDifference of largest and smallest values : " + difference);
+    }
+
+    public static void main(String[] args) {
+        //declaring and initializing an array
+        int[] my_arr = {11, 22, 33, 44, 55};
+        System.out.println("my_arr[] = " + Arrays.toString(my_arr));
+        //passing array to method to get the difference
+        difference_Min_Max(my_arr);
+    }
+}
+
+
+/**
+ *
+ * 17. Write a method to verify if the array contains two specified elements(12,23)
+ */
+
+import java.util.*;
+
+public class ContainsSpecificElements {
+    //method to verify if the array contains two specified elements(12,23)
+    //creating a method which receives an array and integers as parameters
+    static void contains(int[] arr, int n1,int n2) {
+        boolean num1 = false;
+        boolean num2 = false;
+        //using for-each loop
+        for (int i : arr) {
+            //checks if the given element is present and returns true
+            if (i == n1) {
+                num1 = true;
+            }
+            //checks if the given element is present and returns true
+            if (i==n2){
+                num2 = true;
+            }
+        }
+        //Executes if(true)
+        if (num1) {
+            System.out.printf("Contains %d in the array", n1);
+        } else {
+            System.out.printf("\nDoesn't Contain %d in the array", n1);
+        }
+        //Executes if(true)
+        if (num2) {
+            System.out.printf("\nContains %d in the array", n2);
+        } else {
+            System.out.printf("\nDoesn't Contain %d in the array", n2);
+        }
+        System.out.println("\nmy_arr[] = " + Arrays.toString(arr));
+    }
+
+    public static void main(String[] args) {
+        //declaring and initializing an array
+        int[] my_arr = {11, 22, 12, 33, 44, 23, 55};
+        //User Input
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter value to verify (n1 & n2): ");
+        int n1 = sc.nextInt();
+        int n2 = sc.nextInt();
+        //passing array and Elements to verify
+        contains(my_arr, n1,n2);
+    }
+}
+
+
+/**
+ *
+ * 18. Write a program to remove the duplicate elements and return the new array
+ */
+
+import java.util.Arrays;
+
+public class RemoveDuplicateElements {
+    //method to remove duplicate elements from an array
+    //creating a method which receives an array and integer as parameters
+    static int removerDuplicate(int[] arr, int n) {
+        if (n == 0 || n == 1) {
+            return n;
+        }
+        // creating another array for only storing the unique elements
+        int[] temp = new int[n];
+        int j = 0;
+        for (int i = 0; i < n - 1; i++) {
+            if (arr[i] != arr[i + 1]) {
+                temp[j++] = arr[i];
+            }
+        }
+        temp[j++] = arr[n - 1];
+        // Changing the original array
+        for (int i = 0; i < j; i++) {
+            arr[i] = temp[i];
+        }
+        return j;
+    }
+
+    public static void main(String[] args) {
+        //declaring and initializing an array
+        int[] arr = {11, 22, 22, 33, 44, 44, 55, 66, 66};
+        // Printing array as string
+        System.out.println("arr[] = " + Arrays.toString(arr));
+        int n = arr.length;
+        //passing array and array length to method
+        n = removerDuplicate(arr, n);
+        // Printing The new array elements
+        System.out.println("Array after removing duplicate values : ");
+        for (int i = 0; i < n; i++)
+            System.out.print(arr[i] + " ");
+    }
+}
+
+
+/**
+ *
+ * 19. Write a function to find the missing number of sorted array of 1 to 100
+ */
+
+import java.util.Arrays;
+
+public class MissingNumbers {
+    //method to find the missing number of sorted array of 1 to 100
+    //creating a method which receives an array as parameter
+    static void missingNumber(int[] arr) {
+        //Sorting Array
+        Arrays.sort(arr);
+        System.out.println("a[] = " + Arrays.toString(arr));
+        int j = 0;
+        for (int i = 1; i < 100; i++) {
+            if (j < arr.length && i == arr[j])
+                j++;
+            else
+                System.out.print(i + " ");
+        }
+    }
+
+    public static void main(String[] args) {
+        //declaring and initializing an array
+        int[] my_arr = {10, 20, 30, 40, 50, 60, 70, 80, 90};
+        //passing array to method
+        missingNumber(my_arr);
+    }
+}
