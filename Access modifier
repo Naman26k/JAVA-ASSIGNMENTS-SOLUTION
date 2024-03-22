@@ -1,0 +1,143 @@
+/**
+ *
+ * 1. Create a class with PRIVATE fields, private method and a main method. Print the fields
+ * in main method. Call the private method in main method.
+ * - Create a subclass and try to access the private fields and methods from subclass
+ */
+package com.nm.accessmodifiers;
+//class with private fields and method
+public class PrivateFieldsMethods {
+    //private fields
+    private String name = "Sharan";
+    private int age = 21;
+
+    //private method
+    private void pvtMethod() {
+        System.out.println("My Name is " + name + " and my age is " + age);
+    }
+
+    //main method
+    public static void main(String[] args) {
+        PrivateFieldsMethods obj = new PrivateFieldsMethods();
+        //Printing the fields in main method
+        System.out.println(obj.age);
+        System.out.println(obj.name);
+        //Calling the private method in main method
+        obj.pvtMethod();
+    }
+    // NOTE : A subclass does not inherit the private members of its parent class
+}
+
+/*
+ *
+ * 2. Create a class with DEFAULT fields and methods. Access these fields and methods
+ * from any other class in the same package
+ */
+//class with default fields and methods
+class DefaultClass_02 {
+    //Default fields
+    int myAge;
+    String myName;
+
+    //Default method
+    void defaultMethod() {
+        System.out.println("My name is " + myName + " and my age is " + myAge);
+    }
+}
+
+//Accessing default fields and method from other class in the same package
+public class DefaultClassFieldsMethod {
+    public static void main(String[] args) {
+        //Creating object of DefaultClass_02.
+        DefaultClass_02 obj = new DefaultClass_02();
+        //Accessing default fields
+        obj.myAge = 21;
+        obj.myName = "Sharan";
+        //calling default method
+        obj.defaultMethod();
+    }
+}
+
+
+/*
+ *
+ * 3. Create a class with PROTECTED fields and methods. Access these fields and methods
+ * from any other class in the same package.
+ */
+//class with private fields and method
+public class ProtectedClassFieldsMethod {
+    //Protected field
+    protected String name;
+
+    //Protected method
+    protected void protectedMethod() {
+        System.out.println("This is a " + name);
+    }
+}
+
+//Accessing protected fields and methods from other class in the same package
+class protectedClass_03 {
+    public static void main(String[] args) {
+        //Creating object of ProtectedClassFieldsMethod class.
+        ProtectedClassFieldsMethod pc = new ProtectedClassFieldsMethod();
+        //Accessing protected field
+        pc.name = "Protected Method";
+        //Accessing protected method
+        pc.protectedMethod();
+    }
+}  
+
+/*
+ *
+ * 3. Also, Access the PROTECTED fields and methods from child class located
+ * in a different package
+ * <p>
+ * - Access the PROTECTED fields and methods from any class in different package
+ */
+
+//importing different package
+import com.jala.accessmodifiers.ProtectedClassFieldsMethod;
+
+//Accessing the PROTECTED fields and methods from child class
+public class AccessingProtectedFieldsMethod extends ProtectedClassFieldsMethod {
+
+    public static void main(String[] args) {
+        //Creating object of AccessingProtectedFieldsMethod
+        AccessingProtectedFieldsMethod sub = new AccessingProtectedFieldsMethod();
+        //Accessing protected field
+        sub.name = "Protected Method in SubClass";
+        //Accessing protected method
+        sub.protectedMethod();
+    }
+    /* NOTE :
+             - protected member can be access within the package and
+                outside the package but within the child classes */
+}
+
+/*
+ *
+ * 4. Create a class with PUBLIC fields and methods.
+ * Access the public methods and fields from any class in the same package or different
+ * package
+ */
+//class with public fields and method
+class PublicClass_04 {
+    //public fields
+    public String pName = "Public";
+
+    //public method
+    public void publicMethod() {
+        System.out.println("This is " + pName);
+    }
+}
+//Accessing the public methods and fields from other class in the same package
+public class PublicClassFieldsMethods {
+    public static void main(String[] args) {
+        //Creating object of PublicClass_04.
+        PublicClass_04 pub = new PublicClass_04();
+        //Accessing public fields
+        pub.pName = "Public Method";
+        //Accessing public method
+        pub.publicMethod();
+    }
+}
