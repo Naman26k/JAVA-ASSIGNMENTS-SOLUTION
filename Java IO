@@ -1,0 +1,418 @@
+/**
+ *
+ * 1.Write a program to read text from .txt file using InputStream
+ */
+package com.nm.javaIO;
+
+import java.io.FileInputStream;
+import java.io.InputStream;
+
+//FileInputStream class obtains input bytes from a file. It is used for reading byte-oriented data
+public class ReadUsingInputStream {
+
+    public static void main(String[] args) {
+
+        try {
+            // FileInputStream is a subclass of InputStream
+            //file path passed as parameter to the FileInputStream constructor.
+            InputStream fis = new FileInputStream("os.txt");
+            int i;
+            //If the read() method returns -1, there is no more data to read in the FileInputStream
+            while ((i = fis.read()) != -1) {
+                System.out.print((char) i);
+            }
+            // Closes the input stream
+            fis.close();
+        } catch (Exception e) {
+            /* printStackTrace() prints the throwable Exception object as well as with other Information
+            like the line number where Exception occurs and class name where the exception occurred.*/
+            e.getStackTrace();
+        }
+    }
+}
+
+/**
+ *
+ * 2.Write a program to write text to .txt file using OutputStream
+ */
+
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+
+// FileOutputStream is an output stream used for writing data to a file.
+public class WriteUsingOutputStream {
+
+    public static void main(String args[]) {
+
+        String data = "This text is written using OutputStream.";
+
+        try {
+            // FileOutputStream is a subclass of OutputStream
+            //file path passed as parameter to the FileOutputStream constructor.
+            OutputStream fos = new FileOutputStream("os.txt");
+
+            // Converts the string into bytes
+            byte[] db = data.getBytes();
+
+            // Writes data to the output stream
+            fos.write(db);
+            System.out.println("Data is written to the file.");
+
+            // Closes the output stream
+            fos.close();
+        } catch (Exception e) {
+            /* printStackTrace() prints the throwable Exception object as well as with other Information
+            like the line number where Exception occurs and class name where the exception occurred.*/
+            e.getStackTrace();
+        }
+    }
+}
+
+/**
+ *
+ * 3.Read text from a .txt file using BufferedInputStream
+ */
+
+import java.io.*;
+
+//reading bytes is faster using BufferedInputStream
+public class ReadUsingBufferedInputStream {
+    public static void main(String[] args) {
+
+        try {
+            // Creates a FileInputStream
+            //file path passed as parameter to the FileInputStream constructor.
+            FileInputStream fis = new FileInputStream("bos.txt");
+            // Creates a BufferedInputStream
+            BufferedInputStream bis = new BufferedInputStream(fis);
+
+            int i;
+            // while loop continues until a -1 value is read from the BufferedInputStream read() method
+            while ((i = bis.read()) != -1) {
+                System.out.print((char) i);
+            }
+            //closing Streams
+            bis.close();
+            fis.close();
+
+        } catch (Exception e) {
+            /* printStackTrace() prints the throwable Exception object as well as with other Information
+            like the line number where Exception occurs and class name where the exception occurred.*/
+            e.getStackTrace();
+        }
+    }
+}
+
+/**
+ *
+ * 4.Write text to a .txt file using BufferedOutputStream
+ */
+
+import java.io.*;
+
+public class WriteUsingBufferedOutputStream {
+
+    public static void main(String[] args) {
+        String s = "This text is written using BufferedOutputStream.";
+
+        try {
+            // BufferedOutputStream is a subclass of OutputStream
+            //file path passed as parameter to the FileOutputStream constructor.
+            FileOutputStream fos = new FileOutputStream("bos.txt");
+            //the internal buffer has the default size of 8192 bytes.
+            BufferedOutputStream bos = new BufferedOutputStream(fos);
+
+            byte[] arr = s.getBytes();
+            // write() method writes data to the output stream
+            bos.write(arr);
+            //closing streams
+            bos.close();
+            fos.close();
+            System.out.println("Data is written to the file.");
+
+        } catch (Exception e) {
+            /* printStackTrace() prints the throwable Exception object as well as with other Information
+            like the line number where Exception occurs and class name where the exception occurred.*/
+            e.printStackTrace();
+        }
+    }
+}
+
+/**
+ *
+ * 5.Write a program to read text from .txt file using FileReader
+ */
+
+import java.io.FileReader;
+
+// FileReader class is used to write character-oriented data to a file.
+public class ReadUsingFileReader {
+    public static void main(String[] args) {
+
+        try {
+            // Creates a FileReader
+            //file path passed as parameter to the FileReader constructor.
+            FileReader fr = new FileReader("fw.txt");
+
+            int i;
+            //If the read() method returns -1, there is no more data to read in the FileReader
+            while ((i = fr.read()) != -1) {
+                //reads all characters one char at a time from the FileReader.
+                System.out.print((char) i);
+            }
+            //closing FileReader
+            fr.close();
+
+        } catch (Exception e) {
+            /* printStackTrace() prints the throwable Exception object as well as with other Information
+            like the line number where Exception occurs and class name where the exception occurred.*/
+            e.printStackTrace();
+        }
+    }
+}
+
+
+/**
+ *
+ * 6.Write a program to write text to .txt file using FileWriter
+ */
+
+import java.io.FileWriter;
+
+// FileWriter class is used to write character-oriented data to a file.
+public class WriteUsingFileWriter {
+    public static void main(String[] args) {
+
+        String s = "This text is written using FileWriter.";
+
+        try {
+            // Creates a FileWriter
+            //file path passed as parameter to the FileWriter constructor.
+            FileWriter fw = new FileWriter("fw.txt");
+
+            //provides method to write string directly.
+            fw.write(s);
+            //closing FileWriter
+            fw.close();
+            System.out.println("Data is written to the file.");
+
+        } catch (Exception e) {
+            /* printStackTrace() prints the throwable Exception object as well as with other Information
+            like the line number where Exception occurs and class name where the exception occurred.*/
+            e.printStackTrace();
+        }
+    }
+}
+
+
+/*
+ *
+ * 7.Read text from a .txt file using BufferedReader
+ */
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+
+//BufferedReader class is used to read the text from a character-based input stream.
+public class ReadUsingBufferedReader {
+    public static void main(String args[]) {
+
+        try {
+            // Creates a FileReader
+            //file path passed as parameter to the FileReader constructor.
+            FileReader fr = new FileReader("bw.txt");
+            // Creates a BufferedReader
+            BufferedReader br = new BufferedReader(fr);
+
+            int i;
+            // If the read() method returns -1, there is no more data to read in the FileReader
+            while ((i = br.read()) != -1) {
+                //reads all characters one char at a time from the FileReader.
+                System.out.print((char) i);
+            }
+            //closing FileWriter and BufferedWriter
+            br.close();
+            fr.close();
+        } catch (Exception e) {
+            /* printStackTrace() prints the throwable Exception object as well as with other Information
+            like the line number where Exception occurs and class name where the exception occurred.*/
+            e.printStackTrace();
+        }
+    }
+}
+
+
+/**
+ *
+ * 8.Write text to a .txt file using BufferedWriter
+ */
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+
+//BufferedWriter class is used to write the text from a character-based input stream.
+public class WriteUsingBufferedWriter {
+    public static void main(String[] args) {
+
+        String s = "This text is written using BufferedWriter.";
+
+        try {
+            // Creates a FileWriter
+            //file path passed as parameter to the FileWriter constructor.
+            FileWriter fw = new FileWriter("bw.txt");
+            // Creates a BufferedWriter
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            //provides method to write string directly.
+            bw.write(s);
+            //closing FileWriter and BufferedWriter
+            bw.close();
+            fw.close();
+            System.out.println("Data is written to the file.");
+
+        } catch (Exception e) {
+            /* printStackTrace() prints the throwable Exception object as well as with other Information
+            like the line number where Exception occurs and class name where the exception occurred.*/
+            e.printStackTrace();
+        }
+    }
+}
+
+/**
+ *
+ * 9.Write a program to read data from properties file
+ */
+
+import java.io.FileInputStream;
+import java.util.Properties;
+
+public class ReadUsingPropertiesFile {
+
+    public static void main(String args[]) {
+        Properties prop = readPropertiesFile("pf.txt");
+        System.out.println("Name: " + prop.getProperty("Name"));
+        System.out.println("E.no: " + prop.getProperty("E.no"));
+        System.out.println("College: " + prop.getProperty("College"));
+    }
+
+    public static Properties readPropertiesFile(String fileName) {
+        Properties prop = null;
+        try {
+
+            //Instantiating the FileInputStream for output file
+            FileInputStream fis = new FileInputStream(fileName);
+            prop = new Properties();
+            prop.load(fis);
+            fis.close();
+
+        } catch (Exception e) {
+            /* printStackTrace() prints the throwable Exception object as well as with other Information
+            like the line number where Exception occurs and class name where the exception occurred.*/
+            e.printStackTrace();
+        }
+        return prop;
+    }
+}
+
+
+
+/**
+ *
+ *10.Write a program to read data from excel
+ */
+
+import org.apache.poi.ss.usermodel.*;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class ExcelReader {
+    public static void main(String[] args) {
+        try {
+            // Provide path to your Excel file
+            String excelFilePath = "path/to/your/excel/file.xlsx";
+            
+            // Create a FileInputStream to read the Excel file
+            FileInputStream fis = new FileInputStream(excelFilePath);
+            
+            // Create a workbook instance for the Excel file
+            Workbook workbook = WorkbookFactory.create(fis);
+            
+            // Get the first sheet of the workbook
+            Sheet sheet = workbook.getSheetAt(0); // Change index if needed
+            
+            // Iterate through each row of the sheet
+            for (Row row : sheet) {
+                // Iterate through each cell of the row
+                for (Cell cell : row) {
+                    // Print the cell value
+                    System.out.print(cell + "\t");
+                }
+                System.out.println(); // Move to the next row
+            }
+            
+            // Close the workbook and the FileInputStream
+            workbook.close();
+            fis.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+/**
+ *
+ *11.Write a program to write data to excel
+ */
+import org.apache.poi.ss.usermodel.*;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class ExcelWriter {
+    public static void main(String[] args) {
+        // Create a workbook instance
+        Workbook workbook = new XSSFWorkbook(); // For .xlsx format
+        
+        // Create a sheet in the workbook
+        Sheet sheet = workbook.createSheet("Sheet1");
+        
+        // Create some data rows
+        Object[][] data = {
+                {"Name", "Age", "Country"},
+                {"John", 30, "USA"},
+                {"Alice", 25, "UK"},
+                {"Bob", 35, "Canada"}
+        };
+        
+        // Write the data to the sheet
+        int rowNum = 0;
+        for (Object[] rowData : data) {
+            Row row = sheet.createRow(rowNum++);
+            int colNum = 0;
+            for (Object field : rowData) {
+                Cell cell = row.createCell(colNum++);
+                if (field instanceof String) {
+                    cell.setCellValue((String) field);
+                } else if (field instanceof Integer) {
+                    cell.setCellValue((Integer) field);
+                }
+            }
+        }
+        
+        // Write the workbook to an Excel file
+        try (FileOutputStream outputStream = new FileOutputStream("output.xlsx")) {
+            workbook.write(outputStream);
+            System.out.println("Excel file has been created successfully.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            // Close the workbook
+            try {
+                workbook.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
