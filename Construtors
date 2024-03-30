@@ -1,0 +1,131 @@
+/**
+ *
+ * 01. Write a class with a default constructor, one argument constructor and two argument
+ * constructors. Instantiate the class to call all the constructors of that class from
+ * a main class
+ */
+package com.nm.constructors;
+
+class ParentClass_01 {
+    int rollNo;
+    String name;
+    String branch;
+
+    //default constructor
+    ParentClass_01() {
+        System.out.println("Student Details");
+    }
+
+    //one argument constructor
+    ParentClass_01(int rollNo) {
+        this.rollNo = rollNo;
+        System.out.println("Roll No : " + this.rollNo);
+    }
+
+    //two argument constructor
+    ParentClass_01(String name, String branch) {
+        this.name = name;
+        this.branch = branch;
+        System.out.println("Name : " + this.name);
+        System.out.println("Branch : " + this.branch);
+    }
+}
+
+public class DefaultOneTwoArgument {
+    public static void main(String... args) {
+        //calling constructors from main class
+        //creating objects and passing values
+        new ParentClass_01();
+        new ParentClass_01(317);
+        new ParentClass_01("Sharan", "CSE");
+    }
+}
+
+/**
+ *
+ * 02. Call the constructors(both default and argument constructors) of super class from a child
+ * class
+ */
+package com.nm.constructors;
+
+//child subclass extending superclass
+class ChildClass_02 extends ParentClass_01 {
+
+    String clg;
+    String city;
+
+    //calling Parent class constructor using super() keyword
+    ChildClass_02() {
+        super();
+    }
+    //calling Parent class argument constructor using super() keyword
+    ChildClass_02(int rollNo) {
+        super(rollNo);
+    }
+    //calling Parent class argument constructor using super() keyword
+    ChildClass_02(String name, String branch, String clg, String city) {
+        super(name, branch);
+        this.clg = clg;
+        this.city = city;
+        System.out.println("College : " + this.clg);
+    }
+}
+
+public class CallSuperFromChild {
+    public static void main(String... args) {
+        //creating objects and passing values
+        new ChildClass_02();
+        new ChildClass_02(317);
+        new ChildClass_02("Sharan", "CSE", "ICFAI","Hyderabad");
+    }
+}
+
+
+/**
+ *
+ * 3. Apply private, public, protected and default access modifiers to the constructor
+ * 4. Write constructors with return type int and String
+ * 5. Try to call the constructor multiple times with the same object
+ */
+
+
+public class PublicPrivateProtectedDefault {
+    int rollNo;
+    String name;
+    String clg;
+    String city;
+
+    {System.out.println("Student Details");}
+    //default access modifier
+    PublicPrivateProtectedDefault() {
+        this(11);
+    }
+
+    //public access modifier
+    public PublicPrivateProtectedDefault(int rollNo) {
+        this("Sharan");
+        this.rollNo = rollNo;
+        System.out.println("rollNo : " + rollNo);
+    }
+
+    //private access modifiers
+    private PublicPrivateProtectedDefault(String name) {
+        this("ICFAI", "Hyderabad");
+        this.name = name;
+        System.out.println("Name : " + name);
+    }
+
+    //protected access modifiers
+    protected PublicPrivateProtectedDefault(String clg, String city) {
+        this.clg = clg;
+        this.city = city;
+        System.out.println("college : " + clg);
+        System.out.println("City : " + city);
+    }
+
+    public static void main(String[] args) {
+        //calling the constructor multiple times with the same object
+        PublicPrivateProtectedDefault c = new PublicPrivateProtectedDefault();
+    }
+    // NOTE : 4.Constructor looks like method but it is not. It does not have a return type
+}
