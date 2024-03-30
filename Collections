@@ -1,0 +1,234 @@
+/**
+ *
+ * 1.Create an ArrayList of type String with 10 string elements. Add 10 string elements to
+ * ArrayList and perform the below operations
+ * - a. Add an element to the ArrayList
+ * - b. Iterate through the ArrayList by using Iterator object
+ * - c. Add an element at a specific index
+ * - d. Remove an element from the ArrayList, Remove at an index
+ * - e. Update the element at a specific index
+ * - f. Check the element is present at a particular index
+ * - g. Get an element at a particular index
+ * - h. Find out the size of the ArrayList
+ * - i. Check the given element is present in the ArrayList
+ * - j. Remove all elements of the ArrayList
+ */
+package com.nm.collections;
+
+import java.util.Arrays;
+import java.util.Iterator;
+/* Java ArrayList class uses a dynamic array for storing the elements.
+   It is like an array, but there is no size limit. We can add or remove elements anytime. */
+public class ArrayList {
+
+    public static void main(String[] args) {
+
+        //passing an Array converted to List using the asList() method
+        java.util.ArrayList<String> nm = new java.util.ArrayList<>(
+                Arrays.asList("zero", "one", "two", "three", "four", "five"));
+        System.out.println("\n nm = " + nm);
+
+        //a. adding elements to the ArrayList using add method using add() method
+        nm.add("six");
+        nm.add("seven");
+        nm.add("eight");
+        nm.add("nine");
+        System.out.println("\nAfter adding elements :");
+        System.out.println("nm = " + nm);
+
+
+        //b. Iterating through the ArrayList by using Iterator object
+        Iterator<String> itr = nm.iterator();
+        System.out.println("\nIterating through the ArrayList : ");
+        while (itr.hasNext()) {
+            System.out.print(itr.next() + " ");
+        }
+        System.out.println(" ");
+
+        //c. Adding an element at a specific index using add() method
+        nm.add(1, "AtIndex1");
+        System.out.println("\nAfter adding an element at index 1 :");
+        System.out.println("nm = " + nm);
+
+        //d. Removing an element at a specific index using remove() method
+        nm.remove(1);
+        System.out.println("\nAfter removing an element at index 1 :");
+        System.out.println("nm = " + nm);
+
+        //e. Updating the element at a specific index using set() method
+        nm.set(1, "ONE");
+        System.out.println("\nAfter updating the element at index 1 :");
+        System.out.println("nm = " + nm);
+
+        //f. Checking the element is present at a particular index using indexOf() method
+        System.out.println("\nThe element is present at index :");
+        System.out.println(nm.indexOf("three"));
+
+        //g. Getting an element at a particular index using get() method
+        System.out.println("\nThe element at index 3 :");
+        System.out.println(nm.get(3));
+
+        //h. Finding the size of the ArrayList using size() method
+        System.out.println("\nSize of the ArrayList : ");
+        System.out.println(nm.size());
+
+        //i. Checking the element is present in the ArrayList using contains() method
+        System.out.println("\n'two' is present in the ArrayList : ");
+        System.out.println(nm.contains("two")); //returns boolean value
+
+        //j. Removing all elements of the ArrayList using clear() method
+        System.out.println("\nAfter removing all elements of the ArrayList :");
+        nm.clear();
+        System.out.println("nm = " + nm);
+    }
+}
+
+/*
+ *
+ * 2. Create a HashMap with at least 10 key value pairs of the Student ID and Name
+ * - a. Insert a Key value mapping into the map
+ * - b. Fetch the value of a Key
+ * - c. Create a clone/copy of HashMap
+ * - d. Check if the given Key is in the Map
+ * - e. Check if the value is in the Map
+ * - f. Check if the map is empty
+ * - g. Print the size of the Map to the console
+ * - h. Print all the Keys of the map to the console
+ * - j. Remove a specific Key-value pair
+ * - k. Copy all the elements of the Map to another Map
+ */
+
+/* Java HashMap class implements the Map interface which allows us
+    to store key and value pair, where keys should be unique. */
+public class HashMap {
+    public static void main(String[] args) {
+        //storing key in Integer and value in String
+        java.util.HashMap<Integer, String> nm = new java.util.HashMap<>();
+
+        /* If you try to insert the duplicate key, it will
+            replace the element of the corresponding key.  */
+        //a. Inserting Student ID as Key & Name as value using put() method
+        nm.put(1, "Sharan");
+        nm.put(2, "Rohit");
+        nm.put(3, "Leo");
+        nm.put(4, "Keerthana");
+        nm.put(5, "Aditya");
+        nm.put(6, "Manoj");
+        nm.put(7, "Mahideep");
+        nm.put(8, "Prapul");
+        nm.put(9, "Dheeraj");
+        nm.put(10, "Rahul");
+        System.out.println("\nkey-value pairs of the Student ID and Name : ");
+        System.out.println("nm = " + nm);
+
+        //b. Fetching the value of a Key using get() method
+        System.out.println("\nName of the Student with ID no = 6 :");
+        System.out.println(nm.get(6));
+
+        //c. Creating a clone/copy of HashMap using clone() method
+        System.out.println("\nclone/copy of HashMap nm : ");
+        System.out.println(nm.clone());
+
+        //d. Checking if the given Key is in the Map using containsKey() method
+        System.out.println("\nID No = 3 is in the Map : ");
+        System.out.println(nm.containsKey(3));
+
+        //e. Checking if the value is in the Map using containsValue() method
+        System.out.println("\nStudent Name = 'Sharan' is in the map :");
+        System.out.println(nm.containsValue("Sharan"));
+
+        //f. Checking if the map is empty using isEmpty() method
+        System.out.println("\nChecking if the map is empty :");
+        System.out.println(nm.isEmpty());
+
+        //g. Printing the size of the Map to the console using size() method
+        System.out.println("\nThe size of the Map is :");
+        System.out.println(nm.size());
+
+        //h. Printing all the Keys of the map to the console using keySet() method
+        System.out.println("\nAll ID No of the students :");
+        System.out.println(nm.keySet());
+
+        //j. Removing a specific Key-value pair using remove() method
+        System.out.println("\nRemoved ID no = 2 ,Student name = 'Rohit' : ");
+        nm.remove(2, "Rohit");
+        System.out.println(nm);
+
+        //k. Copying all the elements of the Map to another Map using puttAll() method
+        System.out.println("\nCopied all the elements of the nm to icfai :");
+
+        java.util.HashMap<Integer, String> icfai = new java.util.HashMap<>();
+
+        icfai.putAll(nm);
+        System.out.println("icfai = " + icfai);
+    }
+}
+
+/**
+ *
+ * 3.Create a HashSet with at least 10 elements of type String
+ * - Write program covering all the operations of HashSet
+ */
+
+import java.util.Iterator;
+//Java HashSet class is used to create a collection that uses a hash table for storage.
+public class HashSet {
+    public static void main(String[] args) {
+
+        java.util.HashSet<String> nm = new java.util.HashSet<>();
+
+        //a. adding elements to the HashSet using add() method
+        nm.add("zero");
+        nm.add("one");
+        nm.add("two");
+        nm.add("three");
+        nm.add("four");
+        nm.add("five");
+        nm.add("six");
+        nm.add("seven");
+        nm.add("eight");
+        nm.add("nine");
+        nm.add("ten");
+        //does not allow duplicate elements, Set contains unique elements only.
+        nm.add("nine");
+        System.out.println("\nAfter adding elements to HashSet :");
+        //HashSet doesn't maintain the insertion order
+        System.out.println("nm = " + nm);
+
+
+        //b. Iterating through the HashSet by using Iterator object
+        Iterator<String> itr = nm.iterator();
+        System.out.println("\nIterating through the HashSet : ");
+        while (itr.hasNext()) {
+            System.out.print(itr.next() + " ");
+        }
+        System.out.println(" ");
+
+        //c. Create a clone/copy of HashSet using clone() method
+        System.out.println("\nclone/copy of HashSet : ");
+        System.out.println(nm.clone());
+
+        //c. Removing a specific element using remove() method
+        nm.remove("zero");
+        System.out.println("\nAfter removing element 'zero' :");
+        System.out.println("nm = " + nm);
+
+        //f. Checking if the set is empty using isEmpty() method
+        System.out.println("\nChecking if the set is empty :");
+        System.out.println(nm.isEmpty());
+
+
+        //h. Finding the size of the HashSet using size() method
+        System.out.println("\nSize of the HashSet : ");
+        System.out.println(nm.size());
+
+        //d. Checking if element is present in the HashSet using contains() method
+        System.out.println("\nElement 'one' is present in the HashSet : ");
+        System.out.println(nm.contains("one")); //returns boolean value
+
+        //j. Removing all elements of the HashSet using clear() method
+        System.out.println("\nAfter removing all elements of the HashSet :");
+        nm.clear();
+        System.out.println("nm = " + nm);
+    }
+}
